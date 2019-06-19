@@ -34,7 +34,7 @@ function renderTodos() {
         /*Passando o valor da posição do item a ser excluído
         Abaixo, o método index of deve retornar a posição do item "todo" na array todos*/
         var pos = todos.indexOf(todo);
-        //Setando o onclick com o parãmetro pos
+        //Setando o onclick com o parâmetro pos
         linkElement.setAttribute('onclick', 'deleteTodo(' + pos + ')');
 
 
@@ -63,7 +63,7 @@ function addTodo() {
 /*
 Explicação: A função de adicionar todo captura o valor que foi digitado no input 
 e o joga na variável todoText, e esta variável é lançada na array todos. 
-A função renderTodos captura esta array e a transforma em texto para ser inbutido no LI
+A função renderTodos captura esta array e a transforma em texto para ser embutido no LI
 */
 
 //Chamar a função de adicionar
