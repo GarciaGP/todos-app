@@ -3,10 +3,16 @@ listElement = document.querySelector('#app ul');
 inputElement = document.querySelector('#app input');
 buttonElement = document.querySelector('#app button');
 
-//Armazenando os todos em um array:
+/*
+Armazenando os todos em um array: (ESSA VARIÁVEL É DESCARTADA PARA O SALVAMENTO NO STORAGE)
 var todos = [
 
 ];
+*/
+
+/*Pegamos o item contido no Storage e o convertemos, para o navegador fazer a leitura
+Caso não encontre nada ele retorna uma array vazia*/
+var todos = JSON.parse(localStorage.getItem('list_todos')) || [];
 
 //Função para percorrer o array e renderizar na tela
 function renderTodos() {
@@ -52,6 +58,7 @@ function addTodo() {
     //Apagar o texto atual do input e renderizar novamente
     inputElement.value = '';
     renderTodos();
+    saveToStorage();
 }
 /*
 Explicação: A função de adicionar todo captura o valor que foi digitado no input 
@@ -68,4 +75,13 @@ function deleteTodo(pos) {
     //Abaixo, passamos a posição e o número de itens a serem excluídos
     todos.splice(pos, 1)
     renderTodos();
+    saveToStorage();
+}
+
+//Função para salvar no storage
+function saveToStorage(){
+    /*Informamos um nome para o item a ser salvo e o que deverá ser salvo
+    Convertemos a array todos para o formato JSON pois o storage não reconhece arrays
+    Após isso, chamamos a função de salvar nos métodos Delete e Add*/
+    localStorage.getItem('list_todos', JSON.stringify(todos));
 }
